@@ -12,9 +12,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
-    TextView textView1;
-    Button button;
+    TextView textView;//For name
+    TextView textView1;//for ID
+    Button button;//for repo
+    Button button1;//for quiz
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +37,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //Button to move on quiz
+        button1 = (Button) findViewById(R.id.button2);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenQuiz();
+            }
+        });
+    }
+    public void OpenQuiz(){
+        Intent intent = new Intent(this,quiz.class);
+        startActivity(intent);
     }
 }
