@@ -19,9 +19,10 @@ public class quiz extends AppCompatActivity {
 
     private MCQ mcq = new MCQ();
     private String answer;
-    private int tscore = 0;
-    private int mcqLength = mcq.question.length;
-    Random random;
+    int tscore = 0;
+   // private int mcqLength = mcq.question.length;
+    int number = 0;
+   // Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,66 +37,78 @@ public class quiz extends AppCompatActivity {
         c = (Button) findViewById(R.id.button10);
         d = (Button) findViewById(R.id.button11);
 
-        score.setText(""+tscore);
+        score.setText(String.valueOf(tscore));
 
-        random =  new Random();
-        updatemcq(random.nextInt(mcqLength));
+        //random =  new Random();
+        //updatemcq(random.nextInt(mcqLength));
+        updatemcq(number);
 
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(a.getText() == answer){
+                if(a.getText().equals(answer)&& number < 20){
                     tscore++;
-                    score.setText(""+score);
+                    score.setText(String.valueOf(tscore));
+                    number++;
+                    updatemcq(number);
 
                 }else{
-                    updatemcq(random.nextInt(mcqLength));
+                    number++;
+                    score.setText(String.valueOf(tscore));
+                    updatemcq(number);
                 }
             }
         });
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b.getText() == answer){
+                if(b.getText().equals(answer) && number < 20){
                     tscore++;
-                    score.setText(""+score);
-
+                    score.setText(String.valueOf(tscore));
+                    number++;
+                    updatemcq(number);
                 }else{
-                    updatemcq(random.nextInt(mcqLength));
+                    number++;
+                    score.setText(String.valueOf(tscore));
+                    updatemcq(number);
                 }
             }
         });
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(c.getText() == answer){
+                if(c.getText().equals(answer)&& number < 20){
                     tscore++;
-                    score.setText(""+score);
+                    score.setText(String.valueOf(tscore));
+                    updatemcq(number);
 
                 }else{
-                    updatemcq(random.nextInt(mcqLength));
+                    number++;
+                    score.setText(String.valueOf(tscore));
+                    updatemcq(number);
                 }
             }
         });
         d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(d.getText() == answer){
+                if(d.getText().equals(answer)&& number < 20){
                     tscore++;
-                    score.setText(""+score);
+                    score.setText(String.valueOf(tscore));
+                    number++;
+                    updatemcq(number);
 
                 }else{
-                    updatemcq(random.nextInt(mcqLength));
+                    number++;
+                    score.setText(String.valueOf(tscore));
+                    updatemcq(number);
                 }
             }
         });
-
-
-
     //end......
     }
     private void updatemcq(int n){
-        ques.setText(mcq.getQuestion(n)+""+n);
+        ques.setText(mcq.getQuestion(n));
         a.setText(mcq.getOption1(n));
         b.setText(mcq.getOption2(n));
         c.setText(mcq.getOption3(n));
